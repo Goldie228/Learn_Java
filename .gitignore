@@ -1,0 +1,22 @@
+# Сборочные артефакты
+target/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+nbproject/
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+
+# Данные, создаваемые лабораторными работами во время запуска
+lab13/data/
+lab14/data/
