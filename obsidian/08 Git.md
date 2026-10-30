@@ -201,7 +201,21 @@ git log --graph --oneline --decorate --all
 git log --merges --oneline | wc -l    # 15
 ```
 
-Проверка удалённого репозитория без GitHub:
+Публикация в GitHub:
+
+```bash
+git remote add origin https://github.com/Goldie228/Learn_Java.git
+git remote -v
+git push -u origin main
+git push origin --all
+git ls-remote --heads origin
+```
+
+Репозиторий: **https://github.com/Goldie228/Learn_Java** — отправлены `main`
+и все 15 веток `lr1`…`lr15`.
+
+Если GitHub недоступен, те же команды можно проверить на локальном
+bare-репозитории:
 
 ```bash
 git init --bare /tmp/origin.git

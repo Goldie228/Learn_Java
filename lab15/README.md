@@ -37,6 +37,7 @@
 новая ветка создаётся от актуального состояния `main`.
 
 Репозиторий: корень учебного проекта `Learn_Java`, основная ветка `main`.
+Публичная копия: **https://github.com/Goldie228/Learn_Java**.
 
 ---
 
@@ -122,8 +123,8 @@ fast-forward, Git создаёт отдельный merge-коммит с дву
 ## 3. Слияние веток и merge-коммиты
 
 Фактический граф истории после слияния всех пятнадцати веток (граф снят
-непосредственно после merge-коммита `lr15`; завершающий docs-коммит с этим
-отчётом в него не входит):
+непосредственно после merge-коммита `lr15`; завершающие docs-коммиты
+с отчётом и конспектами в него не входят):
 
 ```
 *   c44b090 (HEAD -> main) merge: лабораторная работа №15
@@ -291,43 +292,19 @@ git commit -m "merge: разрешён конфликт версий (1.1 + 2.0 
 Git — распределённая система: каждый клон содержит всю историю. GitHub —
 платформа для хранения удалённых репозиториев и код-ревью.
 
-Последовательность для публикации:
+Последовательность публикации:
 
 ```bash
-git remote add origin https://github.com/<user>/Learn_Java.git
+git remote add origin https://github.com/Goldie228/Learn_Java.git
 git remote -v
 git push -u origin main
 git push origin --all
 git ls-remote --heads origin
 ```
 
-Проверка отправки выполнялась на локальном bare-репозитории (эквивалент
-удалённого, но без сетевой аутентификации):
-
-```
-70a6ba14bc8cbad184e7344bd73e7d964e1a025e	refs/heads/lr1
-558bc59cfe9bdc58097f2798012fde630edc355d	refs/heads/lr10
-99c1fbaecb619c0a675253015973218cfadc2a46	refs/heads/lr11
-7b767d5ecaa5044be7b0947c475da42223020985	refs/heads/lr12
-5a57c97ff4d2e32e6c0a8e4c78cb5a750513a5f0	refs/heads/lr13
-0c56b8056463094fabe15133681a846bea457fdd	refs/heads/lr14
-c98561c3ad121a0950fc0d2eff785a867e797e4c	refs/heads/lr15
-76c8523e0e60ebbcc88d932320252bc37e687c13	refs/heads/lr2
-85ea316182e26631fe0e68d3338f5eea33c7c0f2	refs/heads/lr3
-ef8442383c7ed27dc528385bc19056192b12e6a4	refs/heads/lr4
-1950e3926c1384e508fd286efdb34904d273f9fb	refs/heads/lr5
-7bdd23358582a27954ef5c37d7723cae56e8c8f5	refs/heads/lr6
-287a993ef7b1e4d66038f0fb54035b7ddc524fc5	refs/heads/lr7
-9e908e2d50b7c4312034408694fe541b0fd5cd6c	refs/heads/lr8
-3869d5c564e122413c77d9a70e31835fd59768f0	refs/heads/lr9
-c44b0906cd419ea9dffc0252bf68af96bad08434	refs/heads/main
-```
-
-После проверки remote удалён, чтобы репозиторий не зависел от временного пути:
-
-```bash
-git remote remove origin
-```
+Фактически на GitHub отправлены `main` и все 15 веток `lr1`…`lr15`;
+`git ls-remote --heads origin` показывает 16 ссылок. Remote `origin`
+настроен на публичный репозиторий и остаётся в проекте.
 
 Порядок работы через Pull Request на GitHub:
 
@@ -338,11 +315,6 @@ git remote remove origin
 5. нажать «Merge pull request» — GitHub создаст merge-коммит;
 6. удалить ветку на GitHub и локально: `git branch -d lrN`.
 
-Для реального GitHub требуется аутентификация (Personal Access Token или
-SSH-ключ) и двухфакторная аутентификация для авторов кода. Локальный
-bare-репозиторий позволяет проверить те же команды `remote`, `push` и
-`ls-remote` без публикации учебного проекта.
-
 ---
 
 ## 6. Проверка результата
@@ -350,8 +322,10 @@ bare-репозиторий позволяет проверить те же ко
 ```bash
 git status
 git branch -a
+git remote -v
 git log --merges --oneline | wc -l
 git log --graph --oneline --decorate --all
+git ls-remote --heads origin
 ```
 
 Фактический список веток:
