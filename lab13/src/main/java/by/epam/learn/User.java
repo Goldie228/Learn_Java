@@ -3,8 +3,9 @@ package by.epam.learn;
 import java.util.regex.Pattern;
 
 /**
- * Пользователь системы. Конструктор и сеттеры проверяют данные
- * и выбрасывают {@link InvalidUserDataException}.
+ * Пользователь системы. Конструктор проверяет исходные данные, а сеттер
+ * email — каждое новое значение; ошибки выбрасываются как
+ * {@link InvalidUserDataException}.
  */
 public class User {
 
@@ -90,9 +91,14 @@ public class User {
         failedAttempts = 0;
     }
 
-    /** Обновляет email после повторной проверки формата. */
-    public void updateEmail(String newEmail) throws InvalidUserDataException {
+    /** Сеттер email: проверяет формат до изменения поля. */
+    public void setEmail(String newEmail) throws InvalidUserDataException {
         validateEmail(newEmail);
         this.email = newEmail;
+    }
+
+    /** Обновляет email; оставлено как метод из задания. */
+    public void updateEmail(String newEmail) throws InvalidUserDataException {
+        setEmail(newEmail);
     }
 }
